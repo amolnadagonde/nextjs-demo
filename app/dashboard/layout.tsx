@@ -13,7 +13,7 @@ export default function DashboardLayout({
   users: React.ReactNode;
   login: React.ReactNode;
 }) {
-  const isLoggedIn = false; // Replace with your actual authentication logic
+  const isLoggedIn = true; // Replace with your actual authentication logic
 
   if (!isLoggedIn) {
     return <>{login}</>;

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const Header = () => {
   return (
     <header>
-      <h1>My News Site</h1>
+      <h1>site header</h1>
     </header>
   );
 };
