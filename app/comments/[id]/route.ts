@@ -17,3 +17,19 @@ export async function GET(
     },
   });
 }
+
+export async function PATCH(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
+  const { id } = await params;
+  const payload = await request.json();
+  const commentIndex = comments.findIndex(
+    (c: { id: number | string }) => c.id === parseInt(id),
+  );
+  if (commentIndex === -1) {
+    return new Response("Comment not found", { status: 404 });
+  }
+  comments[commentIndex].text = payload.text;
+  return Response.json(comments[commentIndex]);
+}
