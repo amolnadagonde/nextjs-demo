@@ -33,3 +33,20 @@ export async function PATCH(
   comments[commentIndex].text = payload.text;
   return Response.json(comments[commentIndex]);
 }
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
+  const { id } = await params;
+
+  const updatedComments = comments.filter(
+    (comment) => comment.id !== parseInt(id),
+  );
+
+  return new Response(JSON.stringify(updatedComments), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
